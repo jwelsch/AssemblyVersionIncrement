@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle( "AssemblyVersionIncrement" )]
 [assembly: AssemblyDescription( "" )]
 [assembly: AssemblyConfiguration( "" )]
-[assembly: AssemblyCompany( "TechSmith Corporation" )]
+[assembly: AssemblyCompany( "DigiModern Software Services Incorporated" )]
 [assembly: AssemblyProduct( "AssemblyVersionIncrement" )]
-[assembly: AssemblyCopyright( "Copyright © TechSmith Corporation 2013" )]
+[assembly: AssemblyCopyright( "Copyright © DigiModern Software Services Incorporated 2013-2014" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion( "1.0.0.2" )]
-[assembly: AssemblyFileVersion( "1.0.0.2" )]
+[assembly: AssemblyVersion( "1.0.0.3" )]
+[assembly: AssemblyFileVersion( "1.0.0.3" )]
