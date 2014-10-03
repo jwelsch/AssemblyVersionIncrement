@@ -44,6 +44,7 @@ namespace AssemblyVersionIncrement
          }
          catch ( Exception ex )
          {
+            Console.WriteLine( CommandLine.Help() );
             System.Diagnostics.Trace.WriteLine( ex );
             Console.WriteLine( ex );
          }

@@ -36,6 +36,21 @@ namespace AssemblyVersionIncrement
       }
 
       /// <summary>
+      /// Returns string with help text.
+      /// </summary>
+      /// <returns>Text explaining command line usage.</returns>
+      public static string Help()
+      {
+         return
+@"Command line usage:
+  AssemblyVersionIncrement.exe Major|Minor|Maintenance|Build path-to-assembly-version-file
+
+First argument indicates what part of the version to increment.
+Second argument is the path to the assembly version info file.  Example ""$(ProjectDir)Properties\AssemblyInfo.cs""
+";
+      }
+
+      /// <summary>
       /// Parses the command line arguments.
       /// </summary>
       /// <param name="args">Raw command line arguments.</param>
