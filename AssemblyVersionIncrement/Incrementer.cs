@@ -15,6 +15,11 @@ namespace AssemblyVersionIncrement
       private string assemblyInfoPath;
 
       /// <summary>
+      /// Indicates whether or not to zero out lower order version numbers.
+      /// </summary>
+      private bool zeroLower;
+
+      /// <summary>
       /// Regex used to pull out assembly version information.
       /// </summary>
       private Regex versionRegex = new Regex( @"\[ ?assembly ?: ?AssemblyVersion ?\( ?""[\d]+(\.[\d]+(\.[\d]+(\.[\d]+)?)?)?"" ?\) ?\]" );
@@ -67,7 +72,8 @@ namespace AssemblyVersionIncrement
       /// Creates an object of type Incrementer.
       /// </summary>
       /// <param name="assemblyInfoPath">Path to the assembly info file to increment.</param>
-      public Incrementer( string assemblyInfoPath )
+      /// <param name="zeroLower">True to zero out lower order version, false to leave.</param>
+      public Incrementer( string assemblyInfoPath, bool zeroLower )
       {
          this.assemblyInfoPath = assemblyInfoPath;
 
@@ -177,9 +183,13 @@ namespace AssemblyVersionIncrement
       public void IncrementMajor()
       {
          this.Major++;
-         this.Minor = 0;
-         this.Maintenance = 0;
-         this.Build = 0;
+
+         if ( this.zeroLower )
+         {
+            this.Minor = 0;
+            this.Maintenance = 0;
+            this.Build = 0;
+         }
       }
 
       /// <summary>
@@ -188,8 +198,12 @@ namespace AssemblyVersionIncrement
       public void IncrementMinor()
       {
          this.Minor++;
-         this.Maintenance = 0;
-         this.Build = 0;
+
+         if ( this.zeroLower )
+         {
+            this.Maintenance = 0;
+            this.Build = 0;
+         }
       }
 
       /// <summary>
@@ -198,7 +212,11 @@ namespace AssemblyVersionIncrement
       public void IncrementMaintenance()
       {
          this.Maintenance++;
-         this.Build = 0;
+
+         if ( this.zeroLower )
+         {
+            this.Build = 0;
+         }
       }
 
       /// <summary>

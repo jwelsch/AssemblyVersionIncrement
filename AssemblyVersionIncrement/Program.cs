@@ -1,4 +1,5 @@
 ﻿using System;
+using CommandLineLib;
 
 namespace AssemblyVersionIncrement
 {
@@ -6,13 +7,16 @@ namespace AssemblyVersionIncrement
    {
       static void Main( string[] args )
       {
+         CommandLine<CommandLineArguments> commandLine = null;
+
          try
          {
-            var commandLine = new CommandLine( args );
+            commandLine = new CommandLine<CommandLineArguments>();
+            var arguments = commandLine.Parse( args );
 
-            var incrementer = new Incrementer( commandLine.AssemblyPath );
+            var incrementer = new Incrementer( arguments.AssemblyPath, arguments.ZeroLower );
 
-            switch ( commandLine.VersionPart )
+            switch ( arguments.VersionPart )
             {
                case VersionPart.Major:
                {
@@ -36,7 +40,7 @@ namespace AssemblyVersionIncrement
                }
                default:
                {
-                  throw new ArgumentException( String.Format( "Unknown version component specified: \"{0}\".", commandLine.VersionPart ) );
+                  throw new ArgumentException( String.Format( "Unknown version component specified: \"{0}\".", arguments.VersionPart ) );
                }
             }
 
@@ -44,7 +48,11 @@ namespace AssemblyVersionIncrement
          }
          catch ( Exception ex )
          {
-            Console.WriteLine( CommandLine.Help() );
+            if ( commandLine != null )
+            {
+               Console.WriteLine( commandLine.Help() );
+            }
+
             System.Diagnostics.Trace.WriteLine( ex );
             Console.WriteLine( ex );
          }
