@@ -76,7 +76,7 @@ namespace AssemblyVersionIncrement
       public Incrementer( string assemblyInfoPath, bool zeroLower )
       {
          this.assemblyInfoPath = assemblyInfoPath;
-
+         this.zeroLower = zeroLower;
          this.LoadAssemblyInfo();
       }
 
